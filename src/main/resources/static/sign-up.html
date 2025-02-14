@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/sign-up.css" />
+    <title>Sign up</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f6f9;
+        }
+
+        main {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            width: 50%;
+            background: #6c63ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form h3 a {
+            text-decoration: none;
+            color: #6c63ff;
+            font-size: 14px;
+        }
+
+        .form h3 a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border: 1px solid #6c63ff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6c63ff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #5a52e3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .hero {
+                width: 100%;
+                height: 200px;
+            }
+
+            .form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="hero">
+            <img src="images/library.jpg" alt="library" />
+        </section>
+        <section class="form">
+            <h3><a href="index.html">Home</a></h3>
+            <h1>Create your Account</h1>
+            <form id="signupForm">
+                <div>
+                    <input type="text" id="first-name" name="Firstname" required placeholder="First name" />
+                    <label for="first-name" id="first-name-error"></label>
+                </div>
+                <div>
+                    <input type="text" name="Lastname" id="last-name" placeholder="Last name" required />
+                    <label for="last-name" id="last-name-error"></label>
+                </div>
+                <div>
+                    <input type="text" id="user-name" name="Username" placeholder="Username" required />
+                    <label for="user-name" id="user-name-error"></label>
+                </div>
+                <div>
+                    <input type="text" name="Email" id="email" placeholder="Email / Phone No." required />
+                    <label for="email" id="email-error"></label>
+                </div>
+                <div>
+                    <input type="password" id="password" name="Password" placeholder="Password" required />
+                    <label for="password" id="password-error"></label>
+                </div>
+                <div>
+                    <input type="password" name="Confirm" id="confirm-password" placeholder="Confirm Password" required />
+                    <label for="confirm-password" id="confirm-password-error"></label>
+                </div>
+                <button type="submit">Sign up</button>
+                <div style="flex-direction: column">
+                    <h3><a href="login.html">Already have an account?</a></h3>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const username = document.getElementById('user-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const formData = new FormData();
+            formData.append('Firstname', firstName);
+            formData.append('Lastname', lastName);
+            formData.append('Username', username);
+            formData.append('Email', email);
+            formData.append('Password', password);
+
+            try {
+                const response = await fetch('http://localhost:9090/api/users/signup', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    alert('Signup successful!');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('Signup failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

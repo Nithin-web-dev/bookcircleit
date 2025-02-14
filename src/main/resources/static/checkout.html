@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <!-- Bootstrap CSS for basic styling -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .form-container {
+      margin-top: 50px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    input,
+    select {
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      margin-top: 3px;
+      width: 100%;
+    }
+    .submit-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="index.html" class="text-white text-decoration-none">
+        <img src="images/Logo.png" alt="Logo" style="height: 40px;" />
+      </a>
+      <nav>
+        <a href="index.html" class="text-white me-3">Home</a>
+        <a href="about.html" class="text-white me-3">About</a>
+        <a href="services.html" class="text-white me-3">Services</a>
+        <a href="sign-up.html" class="text-white me-3">Sign Up</a>
+        <a href="login.html" class="text-white me-3">Login</a>
+        <a href="booking.html" class="btn btn-warning">Order Today</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Checkout Form -->
+  <div class="container">
+    <div class="form-container">
+      <form>
+        <div class="mb-3">
+          <label for="paymentMethod" class="form-label">Payment Method</label>
+          <div class="d-flex align-items-center mb-2">
+            <img src="images/VISA-logo.png" alt="VISA" style="width: 70px; height: 50px; margin-right: 10px;">
+            <img src="images/Mastercard-logo.png" alt="MasterCard" style="width: 70px; height: 45px; margin-right: 10px;">
+            <img src="images/Rupay-Logo.png" alt="Rupay" style="width: 70px; height: 70px;">
+          </div>
+          <select id="paymentMethod" name="paymentMethod" class="form-select">
+            <option value="creditCard">Credit Card</option>
+            <option value="debitCard">Debit Card</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="cardNumber" class="form-label">Card Number</label>
+          <input type="number" id="cardNumber" name="cardNumber" placeholder="Enter card number" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="cardHolderName" class="form-label">Card Holder Name</label>
+          <input type="text" id="cardHolderName" name="cardHolderName" placeholder="Enter card holder name" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="expirationDate" class="form-label">Expiration Date</label>
+          <input type="date" id="expirationDate" name="expirationDate" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="cvv" class="form-label">CVV</label>
+          <input type="number" id="cvv" name="cvv" placeholder="Enter CVV" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Sum: $0.00</label>
+          <input type="hidden" id="sum" name="sum" value="0.00">
+        </div>
+        <button type="submit" class="submit-button">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-light text-center p-3 mt-4">
+    <p class="mb-0">&copy; 2025 Pages</p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

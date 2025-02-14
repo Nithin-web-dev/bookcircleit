@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookCircle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..700&family=Roboto:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">BookCircle</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <!-- These will be hidden if the user is logged in -->
+          <li class="nav-item" id="signUpBtn"><a class="nav-link" href="sign-up.html">Sign Up</a></li>
+          <li class="nav-item" id="loginBtn"><a class="nav-link" href="login.html">Login</a></li>
+          <!-- Show profile with username if logged in -->
+          <li class="nav-item" id="profileLink" style="display: none;"><a class="nav-link" href="#">Hello, <span id="userName"></span></a></li>
+          <li class="nav-item">
+            <a href="booking.html" class="btn btn-warning">Buy Now</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-container text-center text-white">
+      <h1 class="display-3">Discover Your Next Favorite Book</h1>
+      <p class="lead">A wide selection of books at your fingertips, just a click away.</p>
+      <a href="booking.html" class="btn btn-lg btn-warning mt-3">Buy Now</a>
+    </div>
+  </header>
+
+  <!-- Trending Books Section -->
+  <section class="container mt-5 text-center">
+    <h2 class="section-title">Most Selling</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <div class="card">
+          <img src="images/evy.jpg" class="card-img-top" alt="Trending Book">
+          <div class="card-body">
+            <h5 class="card-title">Everything Everything</h5>
+            <p class="card-text">Nicola Yoon
+              , 
+              David Yoon
+      </p>
+            <a href="#" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <img src="images/mon.jpg" class="card-img-top" alt="Trending Book">
+          <div class="card-body">
+            <h5 class="card-title">Monster Calls</h5>
+            <p class="card-text">Patrick Ness</p>
+            <a href="#" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Book Categories Section -->
+  <section class="container mt-5">
+    <h2 class="section-title text-center">Our Top Categories</h2>
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <div class="category-card">
+          <img src="images/childre.png" class="img-fluid" alt="Fiction">
+          <div class="category-text">
+            <h4>Children</h4>
+            <p>Rhymes,Poems and more!</p>
+            <a href="#" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="category-card">
+          <img src="images/tech.jpg" class="img-fluid" alt="Fiction">
+          <div class="category-text">
+            <h4>Technology</h4>
+            <p>Apps,Block chain and programming language</p>
+            <a href="#" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer Section -->
+  <footer class="footer py-4">
+    <div class="container text-center">
+      <p>&copy; 2025 Pages. All rights reserved.</p>
+      <p>Email: <a href="mailto:email@example.com">contact@bookcircle.com</a></p>
+      <p>Location: Mumbai, Maharastra</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript to handle the navbar visibility based on login status -->
+  <script>
+    window.onload = function() {
+      // Check if the user is logged in by checking localStorage
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+      if (loggedInUser) {
+        // Show username and profile link
+        document.getElementById('profileLink').style.display = 'block';
+        document.getElementById('userName').textContent = loggedInUser.username;
+        
+        // Hide Login and Sign Up buttons
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('signUpBtn').style.display = 'none';
+      } else {
+        // If not logged in, show login and sign up buttons
+        document.getElementById('profileLink').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
